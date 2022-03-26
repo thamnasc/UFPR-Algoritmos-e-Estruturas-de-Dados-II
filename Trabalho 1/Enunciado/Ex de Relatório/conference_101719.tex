@@ -1,0 +1,127 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[portuguese]{babel} % vai trocar automaticamente, por exemplo, Table por tabela
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{pgfplots}			%Importação de imagens tikz, carregar depois de xcolor
+\usetikzlibrary{plotmarks}
+%\usetikzlibrary{external}
+%\tikzexternalize[prefix=tikz/]
+\pgfplotsset{compat=newest}
+\pgfkeys{/pgf/number format/.cd,1000 sep={}}%para não colocar , nos tikz para separar milhar
+
+\usepackage[nolist]{acronym}
+\usepackage{multirow}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\begin{acronym}[TDMA]
+    \acro{IEEE}{\textit{Institute of Electrical and Electronics Engineers}}
+    \acro{ABNT}{Associação Brasileira de Normas Técnicas}
+\end{acronym}
+
+\newlength\figureheight
+\newlength\figurewidth
+
+
+\title{Exemplo de Relatório}
+
+\author{\IEEEauthorblockN{Paulo R. Lisboa de Almeida}
+\IEEEauthorblockA{\textit{Departamento de Informática} \\
+\textit{Universidade Federal do Paraná -- UFPR}\\
+Curitiba, Brasil \\
+email@servidor.com}
+}
+
+\maketitle
+
+\begin{abstract}
+O abstract é o resumo do trabalho, onde em poucas linhas a ideia do trabalho é descrita, juntamente com os resultados obtidos.
+\end{abstract}
+
+\begin{IEEEkeywords}
+exemplo, relatório, estilo, boa escrita
+\end{IEEEkeywords}
+
+\section{Introdução}
+
+Esse é um exemplo de relatório, criado utilizando \LaTeX, que é uma ferramenta para criação de textos profissionais e científicos. Outras ferramentas também podem ser utilizadas, como o Microsoft Word e o LibreOffice Writer.
+
+Nesse exemplo, foi utilizado o padrão para conferências do \ac{IEEE} \cite{ieee2022}. É possível a utilização de qualquer outro padrão popular, como o da \ac{ABNT} \cite{abnt2022}. Existem modelos no padrão \ac{ABNT} para \LaTeX\ disponíveis em \cite{abntex2022}. É possível também encontrar modelos para o padrão \ac{ABNT} (e outros) para Microsoft Word e Libreoffice Writer facilmente na internet.
+
+\section{Seções}
+
+O título e o nome do autor sempre devem existir. Os demais itens do cabeçalho, como departamento e organização, são opcionais em relatórios simples. O abstract e palavras chave (chamadas de \textit{Index Terms} no padrão \ac{IEEE}), também são opcionais em um relatório simples.
+
+As demais seções dependem do texto a ser produzido, mas geralmente os documentos possuem pelo menos uma seção de introdução, e uma de conclusão. Outros exemplos de seção são seções para se definir o protocolo experimental, experimentos realizados, discussão de resultados, \dots
+
+\section{Boas Práticas}
+
+``Se eu tivesse mais tempo, te escreveria uma carta mais curta'' (Blaise Pascal). Seja conciso, passando as ideias de maneira direta (ou no bom português, sem ``encher linguiça''). Mas tome cuidado para não ocultar nenhum detalhe relevante.
+
+Textos técnicos e científicos devem ser escritos de forma indireta. Não utilize, por exemplo, narrativa em primeira pessoa (e.g. ``Eu fiz os experimentos \dots'' deve ser substituído por ``Os experimentos foram realizados \dots'').
+
+Sempre que possível use referências bibliográficas confiáveis (e.g. livros ou artigos científicos) para suportar suas afirmações. Veja um exemplo a seguir:
+
+Em se tratando se sistemas operacionais, os sistemas baseados em UNIX foram capazes de demonstrar já na década de 70 que um sistema operacional interativo e poderoso não precisa ser custoso em termos de hardware e recursos humanos \cite{ritchieThompson1978}.
+
+Note que o formato da citação depende do padrão sendo utilizado. No padrão \ac{IEEE} usa-se [NUMERO]. Já o padrão \ac{ABNT} utiliza o formato (AUTOR, ano).
+
+
+\subsection{Figuras e Tabelas}
+
+A Tabela \ref{table:amplaConc} é um exemplo de tabela. Não deixe tabelas ou figuras ``soltas'' no texto. Tabelas e figuras devem possuir uma legenda que indique de forma clara do que se tratam os dados.
+
+Sempre cite e comente as figuras e tabelas no texto. Por exemplo, na Tabela \ref{table:amplaConc} é possível verificar uma queda na relação candidato/vaga com o decorrer dos anos.
+
+
+\begin{table}[htpb]
+\centering
+\caption{Relação Candidato/Vaga em ampla concorrência.}
+\label{table:amplaConc}
+\begin{tabular}{lllll}
+ & \multicolumn{4}{c}{Candidato/Vaga por ano} \\\cline{2-5}
+Curso                       & 2016      & 2017     & 2019     & 2021     \\\hline
+BCC                    & 14,2      & 14,2     & 12,2     & 9,8      \\
+Eng. Civil             & 15,0      & 13,1     & 6,2      & 7,7\\\hline
+\end{tabular}
+\end{table}
+
+Muitas vezes os dados podem ser melhor expressados utilizando figuras. A Figura \ref{fig:amplaConc} monstra a mesma informação da Tabela \ref{table:amplaConc}, mas em formato de gráfico. A Figura foi feita utilizando Tikz para \LaTeX. O Tikz é uma ferramenta profissional para criar gráficos vetoriais em \LaTeX (faça um \textit{zoom} nesse gráfico e note que ele não perde qualidade). É possível (e mais fácil) importar figuras jpeg ou png diretamente para o relatório.
+
+\begin{figure}[htpb]
+        \centering
+        \setlength\figureheight{3.0cm}
+		\setlength\figurewidth{8.0cm}
+        \input{candidatoVaga.tikz}
+        \caption{Gráfico com a relação Candidato/Vaga em ampla concorrência.}
+        \label{fig:amplaConc}
+\end{figure}
+
+Uma boa análise (de exemplo) para a Figura \ref{fig:amplaConc} pode ser: na Figura \ref{fig:amplaConc} pode-se observar o declínio da relação candidato/vaga nos últimos anos, sendo que esse declínio é mais severo para o curso de Engenharia Civil, quando comparado com o curso de Ciência da Computação.
+
+\section{Glossário}
+
+A abreviação e.g. vem do latim \textit{exempli gratia}, e significa \textit{por exemplo} em português. É usual utilizar \textit{p. ex.} no lugar de e.g. em português.
+
+A abreviação i.e. vem do latim \textit{id est}, que significa \textit{isto é} ou \textit{ou seja} em português.
+
+Ambas expressões são comuns em textos científicos e jurídicos.
+
+\section{Conclusão}
+
+Este é apenas um exemplo de relatório para os ``não iniciados'' em textos técnicos e científicos. O padrão utilizado (\ac{ABNT}, \ac{IEEE}, \dots) depende da especificação do trabalho ou projeto. Para trabalhos genéricos, onde não há especificação de padrão, basta utilizar um padrão amplamente aceito, como o utilizado neste texto.
+
+A ferramenta a ser utilizada para a confecção do texto, como \LaTeX, Microsoft Word ou Libreoffice, fica a cargo da preferência do escritor. No entanto, opte por gerar o texto final em formato pdf para garantir a compatibilidade.
+
+E sempre lembre-se de que o mais importante em um trabalho qualquer é o conteúdo. Seja direto, e passe suas ideias da forma mais clara o possível.
+
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
+
+\end{document}
